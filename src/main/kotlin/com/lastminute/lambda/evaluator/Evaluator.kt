@@ -4,7 +4,6 @@ import com.lastminute.lambda.LambdaExpression
 import com.lastminute.lambda.LambdaExpression.*
 import com.lastminute.lambda.rules.betaReduction
 
-
 val zero =
     Abstraction("f",
         Abstraction("x",
@@ -82,12 +81,29 @@ val program = Application(
     four
 )
 
+tailrec fun reduce(lambdaExpression: LambdaExpression, stepAction: (LambdaExpression) -> Unit): LambdaExpression {
+    val reductionResult = betaReduction(lambdaExpression)
+    return if (reductionResult == lambdaExpression) {
+        reductionResult
+    } else {
+        stepAction(reductionResult)
+        reduce(reductionResult, stepAction)
+    }
+}
+
 fun main(args: Array<String>) {
 
-    var multiplication: LambdaExpression = program
+//    fun <In, Out> y(f: (_: (n: In) -> Out) -> (n: In) -> Out): (n: In) -> Out = { f(y(f))(it) }
+//    val reduce = y<LambdaExpression, LambdaExpression> { f ->
+//        {
+//            val reductionResult = betaReduction(it)
+//            if (reductionResult == it) {
+//                reductionResult
+//            } else {
+//                f(reductionResult)
+//            }
+//        }
+//    }
 
-    for (i in 0..50) {
-        println("= $multiplication")
-        multiplication = betaReduction(multiplication)
-    }
+    println(reduce(program) { println("= $it") })
 }
