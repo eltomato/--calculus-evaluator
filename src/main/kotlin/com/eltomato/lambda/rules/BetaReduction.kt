@@ -1,7 +1,7 @@
-package com.lastminute.lambda.rules
+package com.eltomato.lambda.rules
 
-import com.lastminute.lambda.LambdaExpression
-import com.lastminute.lambda.LambdaExpression.*
+import com.eltomato.lambda.LambdaExpression
+import com.eltomato.lambda.LambdaExpression.*
 
 fun `β-reduction`(lambdaExpression: LambdaExpression): LambdaExpression {
     return when (lambdaExpression) {

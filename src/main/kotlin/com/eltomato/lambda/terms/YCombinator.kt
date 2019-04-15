@@ -1,7 +1,7 @@
-package com.lastminute.lambda.terms
+package com.eltomato.lambda.terms
 
-import com.lastminute.lambda.`_`
-import com.lastminute.lambda.λ
+import com.eltomato.lambda.`_`
+import com.eltomato.lambda.λ
 
 val Y = λ("f") { f ->
     λ("x") { x -> f _ (x _ x) } _ λ("x") { x -> f _ (x _ x) }

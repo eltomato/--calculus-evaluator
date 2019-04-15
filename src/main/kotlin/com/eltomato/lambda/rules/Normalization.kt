@@ -1,8 +1,6 @@
-package com.lastminute.lambda.evaluator
+package com.eltomato.lambda.rules
 
-import com.lastminute.lambda.*
-import com.lastminute.lambda.terms.*
-import com.lastminute.lambda.rules.`β-reduction`
+import com.eltomato.lambda.LambdaExpression
 
 tailrec fun reduce(lambdaExpression: LambdaExpression, stepAction: (LambdaExpression) -> Unit): LambdaExpression {
     val reductionResult = `β-reduction`(lambdaExpression)
@@ -12,12 +10,4 @@ tailrec fun reduce(lambdaExpression: LambdaExpression, stepAction: (LambdaExpres
         stepAction(reductionResult)
         reduce(reductionResult, stepAction)
     }
-}
-
-fun main(args: Array<String>) {
-
-    val program = Y _ fact _ three
-
-    println(program)
-    println(reduce(program) { println("= $it") })
 }

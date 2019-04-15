@@ -1,6 +1,6 @@
-package com.lastminute.lambda
+package com.eltomato.lambda
 
-import com.lastminute.lambda.LambdaExpression.*
+import com.eltomato.lambda.LambdaExpression.*
 
 sealed class LambdaExpression {
     data class Variable(val variable: String) : LambdaExpression() {
