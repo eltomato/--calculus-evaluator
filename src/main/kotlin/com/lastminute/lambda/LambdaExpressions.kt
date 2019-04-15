@@ -1,5 +1,7 @@
 package com.lastminute.lambda
 
+import com.lastminute.lambda.LambdaExpression.*
+
 sealed class LambdaExpression {
     data class Variable(val variable: String) : LambdaExpression() {
         override fun toString(): String {
@@ -19,3 +21,7 @@ sealed class LambdaExpression {
         }
     }
 }
+
+fun λ(variable: String, expression: (Variable) -> LambdaExpression): LambdaExpression = Abstraction(variable, expression(Variable(variable)))
+infix fun LambdaExpression.`_`(other: LambdaExpression) = Application(this, other)
+
