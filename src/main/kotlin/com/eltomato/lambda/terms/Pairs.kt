@@ -21,8 +21,3 @@ val second =
     λ("pair") { pair ->
         pair _ fals3
     }
-
-val pairStep =
-    λ("pair") { pair ->
-        pairOf _ (second _ pair) _ (succ _ (second _ pair))
-    }
